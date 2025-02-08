@@ -54,7 +54,7 @@ include '../navbar.php';
                                 <td>{$no}</td>
                                 <td>{$row['nama_kategori']}</td>
                                 <td class='text-center'>
-                                    <a href='edit_kategori.php?id={$row['id_kategori']}' class='btn btn-sm btn-success'>Edit</a>
+                                    <a href='edit_kategori.php?id={$row['id_kategori']}' class='btn btn-sm btn-primary'>Edit</a>
                                     <a href='hapus_kategori.php?id={$row['id_kategori']}' onclick='return confirm(\"Apakah Anda yakin ingin menghapus kategori ini?\")' class='btn btn-sm btn-danger'>Hapus</a>
                                 </td>
                             </tr>

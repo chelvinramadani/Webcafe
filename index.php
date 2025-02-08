@@ -19,16 +19,6 @@ if ($filter === 'transaksi_terbanyak') {
               WHERE total_harga IN (SELECT MAX(total_harga) FROM pembayaran)
               ORDER BY total_harga DESC 
               LIMIT $start, $limit";
-} elseif ($filter === 'produk_terjual_terbanyak') {
-    $query = "SELECT t.id_transaksi, t.nama_pembeli, t.total_harga, t.tanggal_pembayaran 
-              FROM pembayaran t
-              WHERE t.id_produk IN (
-                  SELECT p.id_produk 
-                  FROM produk p 
-                  ORDER BY p.jumlah_terjual DESC 
-                  LIMIT 1
-              )
-              LIMIT $start, $limit";
 } else {
     $query = "SELECT id_transaksi, nama_pembeli, total_harga, tanggal_pembayaran 
               FROM pembayaran 
@@ -54,6 +44,7 @@ $query_total_transaksi = "SELECT (SELECT COUNT(*) FROM pembayaran) AS total_tran
 $result_total_transaksi = $koneksi->query($query_total_transaksi);
 $total_transaksi = ($result_total_transaksi->num_rows > 0) ? $result_total_transaksi->fetch_assoc()['total_transaksi'] : 0;
 
+
 $result = $koneksi->query($query);
 ?>
 
@@ -66,6 +57,7 @@ $result = $koneksi->query($query);
 
     <!-- Card Row for Sales Data -->
     <div class="row">
+
         <!-- Total Sales Card -->
         <div class="col-md-6">
             <div class="card text-white bg-success mb-3">
